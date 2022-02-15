@@ -30,12 +30,16 @@ class MarkovMachine {
     // TODO: implement this!
     let result = new Map();
 
-    for(let i=0; i<this.words.length; i++){
-      result.get()
-      result.set(this.words[i], this.words[i+1]);
+    for (let i = 0; i < this.words.length; i++) {
 
+      if (result.get(this.words[i])) {
+        result.get(this.words[i]).push(this.words[i + 1] || null);
+      } else {
+        result.set(this.words[i], [this.words[i + 1] || null]);
+      }
     }
 
+    return result;
   }
 
 
@@ -44,9 +48,21 @@ class MarkovMachine {
 
   getText() {
     // TODO: implement this!
-
+    const textOutput = [this.words[0]];
     // - start at the first word in the input text
     // - find a random word from the following-words of that
     // - repeat until reaching the terminal null
+    let word = this.words[0];
+
+    while (word != null) {
+      let options = this.chains.get(word);
+      let randIndex = Math.floor(Math.random() * options.length);
+      textOutput.push(options[randIndex]);
+
+      word = options[randIndex];
+    }
+
+    return textOutput.join(/[ \r\n]+/);
+
   }
 }
