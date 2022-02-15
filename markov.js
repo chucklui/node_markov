@@ -8,13 +8,13 @@ class MarkovMachine {
   constructor(text) {
     // A "word" will also include any punctuation around the word, so this will
     // include things like "The", "cat", "cat.".
-    this.words = text.split(/[ \r\n]+/);
+    this.words = text.split(/[ \r\n]+/); //array
     this.chains = this.getChains();
   }
 
   /** Get markov chain: returns Map of Markov chains.
    *
-   *  For text of "The cat in the hat.", chains will be:
+   *  For text of "The cat in the hat. The cat in the hat.", chains will be:
    * 
    *  {
    *   "The": ["cat"],
@@ -28,6 +28,14 @@ class MarkovMachine {
 
   getChains() {
     // TODO: implement this!
+    let result = new Map();
+
+    for(let i=0; i<this.words.length; i++){
+      result.get()
+      result.set(this.words[i], this.words[i+1]);
+
+    }
+
   }
 
 
