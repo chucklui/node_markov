@@ -54,7 +54,7 @@ class MarkovMachine {
     // - repeat until reaching the terminal null
     let word = this.words[0];
 
-    while (word != null) {
+    while (word !== null) {
       let options = this.chains.get(word);
       let randIndex = Math.floor(Math.random() * options.length);
       textOutput.push(options[randIndex]);
