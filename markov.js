@@ -62,7 +62,10 @@ class MarkovMachine {
       word = options[randIndex];
     }
 
-    return textOutput.join(/[ \r\n]+/);
+    return textOutput.join(' ');
 
   }
 }
+module.exports = {
+  'markovMachine': MarkovMachine
+};
